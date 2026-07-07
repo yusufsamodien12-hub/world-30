@@ -26,17 +26,18 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+          cache-dependency-path: 'world26-fixed/package-lock.json'
 
       - name: Install dependencies
-        run: npm install
+        run: cd world26-fixed && npm install
 
       - name: Build
-        run: npm run build
+        run: cd world26-fixed && npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist'
+          path: 'world26-fixed/dist'
 
   deploy:
     environment:
